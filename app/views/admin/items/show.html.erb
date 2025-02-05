@@ -4,5 +4,5 @@
 <p>値段：<%= @item.price %></p>
 <p>商品説明：<%= @item.introduction %></p>
 <%= link_to "編集", edit_admin_item_path(@item.id) %>
-<%= link_to "削除", admin_item_path(@item.id), method: :delete %>
+<%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <%= link_to "戻る", admin_items_path %>
