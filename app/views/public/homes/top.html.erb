@@ -1,4 +1,11 @@
 <h1>topページだよ</h1>
+<%= link_to "about", about_path %>
 
 <h3>商品ページ</h3>
 <%= link_to "item", items_path %>
+<h3>管理者ページ</h3>
+<%= link_to "admin", admin_root_path %>
+<br>
+<h3>お客さんはこちら</h3>
+<%= link_to "ログイン", new_customer_session_path %>
+<%= link_to "サインアップ", new_customer_registration_path %>

@@ -1,0 +1,12 @@
+<h1><%= @customer.name %>さんのマイページ</h1>
+
+<p>名前：<%= @customer.name %></p>
+<p>メールアドレス：<%= @customer.email %></p>
+<p>会員ステータス：
+  <% if @customer.is_active == true %>
+    有効
+  <% else %>
+    退会
+  <% end %>
+</p>
+<%= link_to "編集", edit_customer_path(@customer.id) %>
