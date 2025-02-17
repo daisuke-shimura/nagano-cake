@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
+    get 'confirm/:id' => 'customers#confirm', as: 'confirm'
+    patch 'quit/:id' => 'customers#quit', as: 'quit'
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -16,6 +16,16 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def confirm
+    @customer = Customer.find(params[:id])
+  end
+
+  def quit
+    customer = Customer.find(params[:id])
+    customer.update(is_active: false)
+    redirect_to customer_path(current_customer.id)
+  end
+
   private
   def customer_params
     params.require(:customer).permit(:name, :email, :is_active )
