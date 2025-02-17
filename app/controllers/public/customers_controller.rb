@@ -22,7 +22,8 @@ class Public::CustomersController < ApplicationController
 
   def quit
     customer = Customer.find(params[:id])
-    customer.update(is_active: false)
+    customer.is_active = false
+    customer.save
     redirect_to customer_path(current_customer.id)
   end
 
