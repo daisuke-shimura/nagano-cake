@@ -10,9 +10,10 @@ class Public::CartItemsController < ApplicationController
     cart.item_id = item.id
     cart.amount = 1
     if cart.save
-    else
-      cart = CartItem.find_by(item_id: item.id)
+    elsif (cart = CartItem.find_by(item_id: item.id))
       cart.amount += 1
+      cart.save
+    else
     end
     redirect_to request.referer
   end
