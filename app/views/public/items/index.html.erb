@@ -1,1 +1,20 @@
 <h1>ユーザーの商品一覧画面</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>値段</th>
+      <th>商品説明</th>
+    </tr>
+  </thead>
+  <% @items.each do |item| %>
+    <tbody>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %>円</td>
+        <td><%= item.introduction %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
