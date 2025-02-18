@@ -6,15 +6,29 @@
       <th>商品名</th>
       <th>値段</th>
       <th>商品説明</th>
+      <th></th>
     </tr>
   </thead>
   <% @items.each do |item| %>
     <tbody>
       <tr>
-        <td><%= item.name %></td>
+        <td><%= link_to item_path(item.id) do %>
+              <%= item.name %>
+            <% end %>
+        </td>
         <td><%= item.price %>円</td>
         <td><%= item.introduction %></td>
+        <td><%= link_to "カートに入れる", cart_items_path(item_id: item.id), method: :post %></td>
       </tr>
     </tbody>
   <% end %>
 </table>
+<hr>
+<% CartItem.all.each do |cart| %>
+  <%= cart.id %>
+  <%= cart.customer_id %>
+  <%= cart.item_id %>
+  <%= cart.amount %>
+  <%= link_to "削除", cart_item_path(cart.id), method: :delete %>
+  <br />
+<% end %>

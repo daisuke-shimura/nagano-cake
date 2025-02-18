@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'confirm/:id' => 'customers#confirm', as: 'confirm'
     patch 'quit/:id' => 'customers#quit', as: 'quit'
 
-    resources :cart_items, only: [:index, :update, :create]
+    resources :cart_items, only: [:index, :update, :create, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
