@@ -7,3 +7,4 @@
   <%= link_to "削除", cart_item_path(cart.id), method: :delete %>
   <br />
 <% end %>
+<%= link_to "すべて削除", all_destroy_path, method: :delete, "data-confirm" => "全てのカートの商品を削除します。\nよろしいですか？" %>

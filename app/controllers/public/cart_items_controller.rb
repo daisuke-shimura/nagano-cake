@@ -35,4 +35,9 @@ class Public::CartItemsController < ApplicationController
     cart.destroy
     redirect_to request.referer
   end
+
+  def all_destroy
+    current_customer.cart_items.destroy_all
+    redirect_to request.referer
+  end
 end

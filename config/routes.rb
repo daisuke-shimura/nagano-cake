@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     patch 'quit/:id' => 'customers#quit', as: 'quit'
 
     resources :cart_items, only: [:index, :update, :create, :destroy]
+    delete 'all_destroy' => 'cart_items#all_destroy'
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
