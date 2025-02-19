@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    
+    @cart = CartItem.includes(:item).where(customer_id: current_customer.id)
   end
 
   def create
@@ -9,10 +9,11 @@ class Public::CartItemsController < ApplicationController
     cart.customer_id = current_customer.id
     cart.item_id = item.id
     cart.amount = 1
-    if cart.save
-    elsif (cart = CartItem.find_by(item_id: item.id))
+    if CartItem.exists?(item_id: item.id, customer_id: current_customer.id)
+      cart = CartItem.find_by(item_id: item.id, customer_id: current_customer.id)
       cart.amount += 1
       cart.save
+    elsif cart.save
     else
     end
     redirect_to request.referer
@@ -20,6 +21,13 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart = CartItem.find(params[:id])
+    if params[:sign].to_i == 1
+      cart.amount += 1
+    else
+      cart.amount -= 1
+    end
+    cart.save
+    redirect_to request.referer
   end
 
   def destroy
