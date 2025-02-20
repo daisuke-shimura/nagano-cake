@@ -5,6 +5,7 @@
       <th>配送先名</th>
       <th>郵便番号</th>
       <th>住所</th>
+      <th></th>
     </tr> 
   </thead>
   <tbody>
@@ -13,6 +14,7 @@
         <td><%= address.name %></td>
         <td><%= address.number %></td>
         <td><%= address.place %></td>
+        <td><%= link_to "編集", edit_address_path(address.id) %></td>
       </tr>
     <% end %>
   </tbody>
