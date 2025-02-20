@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2025_02_19_153208) do
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "order_id"
-    t.integer "number"
+    t.string "number"
     t.string "place"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
