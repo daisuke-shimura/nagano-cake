@@ -20,13 +20,15 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     resources :customers, only: [:show, :edit, :update]
-    get 'confirm/:id' => 'customers#confirm', as: 'confirm'
-    patch 'quit/:id' => 'customers#quit', as: 'quit'
+    get 'customers/confirm/:id' => 'customers#confirm', as: 'customer_confirm'
+    patch 'customers/quit/:id' => 'customers#quit', as: 'customer_quit'
 
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'all_destroy' => 'cart_items#all_destroy'
 
     resources :orders, only: [:index, :new, :show, :create]
+    get 'orders/confirm/:id' => 'orders#confirm', as: 'order_confirm'
+    get 'orders/decision/:id' => 'orders#decision', as: 'order_decision'
 
     resources :address, only: [:index, :edit, :create, :update, :destroy]
   end

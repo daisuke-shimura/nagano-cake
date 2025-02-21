@@ -1,6 +1,10 @@
 <h1>注文情報入力画面</h1>
 <%= form_with model: @order, url: orders_path, method: :post do |f| %>
   <%= f.label "支払い方法" %>
+  <%= f.select :pay_method, [["クレジットカード", "クレジットカード"], ["コンビニ払い", "コンビニ払い"], ["QRコード決済", "QRコード決済"]], include_blank: "選択して下さい" %>
+
+  <%= f.label "お届け先" %>
+  <%= f.select :goal, @address.pluck(:name, :name), include_blank: "選択して下さい" %>
   
   <%= f.submit "注文確定" %>
 <% end %>
