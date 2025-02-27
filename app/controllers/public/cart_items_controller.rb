@@ -26,7 +26,12 @@ class Public::CartItemsController < ApplicationController
     else
       cart.amount -= 1
     end
-    cart.save
+    
+    if cart.amount == 0
+      cart.destroy
+    else
+      cart.save
+    end
     redirect_to request.referer
   end
 

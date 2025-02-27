@@ -7,6 +7,7 @@
       <th>住所</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr> 
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
         <td><%= address.place %></td>
         <td><%= link_to "編集", edit_address_path(address.id) %></td>
         <td><%= link_to "削除", address_path(address.id), method: :delete %></td>
+        <td><%= address.customer_id %><td>
       </tr>
     <% end %>
   </tbody>
