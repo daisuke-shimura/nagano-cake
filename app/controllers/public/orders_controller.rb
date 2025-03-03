@@ -11,8 +11,14 @@ class Public::OrdersController < ApplicationController
     redirect_to order_confirm_path(order.id)
   end
 
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to customer_path(current_customer.id)
+  end
+
   def confirm
-    
+    @order = Order.find(params[:id])
   end
 
   def decision

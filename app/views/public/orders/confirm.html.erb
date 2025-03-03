@@ -1,1 +1,9 @@
 <h1>注文確認画面</h1>
+<p>支払い方法：<%= @order.pay_method %></p>
+<p>配送先：<%= @order.goal %></p>
+<p>でよろしいですか？</p>
+<p>
+  <%= link_to "キャンセル", order_path(@order.id), method: :delete %>
+  ：
+  <%= link_to "確定", order_decision_path(@order.id) %>
+</p>
