@@ -1,27 +1,49 @@
-<h2>Log in</h2>
+<div clsas="row">
+  <h2>ログイン</h2>
+</div>
 
+<div clsass="row">
+  <h4>会員の方はこちらからログイン</h4>
+</div>
 <%= form_with model: @customer, url: customer_session_path do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row">
+    <div class="col-4 offset-1">
+      <%= f.label "メールアドレス" %>
+    </div>
+    <div class="col-7">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-75' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+    <div class="col-4 offset-1">
+      <%= f.label "パスワード" %>
+    </div>
+    <div class="col-7">
+      <%= f.password_field :password, autocomplete: "current-password", class: 'w-75' %>
+    </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row">
+      <div class="col offset-1">
+        <%= f.check_box :remember_me %>
+        <%= f.label "ログインを保存" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="row">
+    <div class="col-7 offset-5">
+      <button type="submit" class="btn btn-primary w-25">ログイン</button>
+    </div>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<div class="row">
+  <h4>会員登録がお済出ない方</h4>
+</div>
+
+<div class="row"><%= render "public/shared/links" %>から新規登録を行ってください。</div>
+
