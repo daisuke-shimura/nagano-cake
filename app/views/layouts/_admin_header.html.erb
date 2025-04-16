@@ -4,7 +4,6 @@
 <div class="col">
   <% if admin_signed_in? %>
     <ul>
-      <li><%= link_to "顧客ページ", root_path %>
       <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
     </ul>
   <% else %>

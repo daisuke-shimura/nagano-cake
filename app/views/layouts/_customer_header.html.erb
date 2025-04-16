@@ -9,7 +9,7 @@
       <li><%= link_to "カート", cart_items_path %></li>
       <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
     </ul>
-    <h3>ログインユーザ：<%= current_customer.name %></h3>
+    <h3>ログインユーザ：<%= current_customer.sei %> <%= current_customer.mei %></h3>
   <% else %>
     <ul>
       <li><%= link_to "ルートパス", root_path %></li>
