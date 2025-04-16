@@ -1,6 +1,6 @@
-<h1><%= @customer.name %>さんのマイページ</h1>
+<h3><%= @customer.sei %> <%= @customer.mei %>さんのマイページ</h3>
 
-<p>名前：<%= @customer.name %></p>
+<p>名前：<%= @customer.sei %> <%= @customer.mei %></p>
 <p>メールアドレス：<%= @customer.email %></p>
 <p>会員ステータス：
   <% if @customer.is_active == true %>
