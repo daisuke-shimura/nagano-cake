@@ -1,5 +1,7 @@
 <div class="col">
-  <h2><i class="fa-solid fa-user"></i>顧客用ページ</h2>
+  <%= link_to root_path, class: "nav-link me-2" do %>
+    <button type="button" class="btn btn-outline-dark w-25">LOGO</button>
+  <% end %>
 </div>
 <div class="col">
   <% if customer_signed_in? %>
@@ -11,11 +13,27 @@
     </ul>
     <h3>ログインユーザ：<%= current_customer.sei %> <%= current_customer.mei %></h3>
   <% else %>
-    <ul>
-      <li><%= link_to "ルートパス", root_path %></li>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "ログイン", new_customer_session_path %></li>
-      <li><%= link_to "サインアップ", new_customer_registration_path %></li>
+    <ul class="nav">
+      <li class="nav-item me-2">
+        <%= link_to about_path, class: "nav-link me-2" do %>
+          <button type="button" class="btn btn-outline-secondary">About</button>
+        <% end %>
+      </li>
+      <li class="nav-item me-2">
+        <%= link_to items_path, class: "nav-link me-2" do %>
+          <button type="button" class="btn btn-outline-secondary">商品一覧</button>
+        <% end %>
+      </li>
+      <li class="nav-item me-2">
+        <%= link_to new_customer_registration_path, class: "nav-link me-2" do %>
+          <button type="button" class="btn btn-outline-secondary">新規登録</button>
+        <% end %>
+      </li>
+      <li class="nav-item me-2">
+        <%= link_to new_customer_session_path, class: "nav-link me-2" do %>
+          <button type="button" class="btn btn-outline-secondary">ログイン</button>
+        <% end %>
+      </li>
     </ul>
   <% end %>
 </div>
