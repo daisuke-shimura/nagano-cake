@@ -1,25 +1,26 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
+
   def index
     @cart = CartItem.includes(:item).where(customer_id: current_customer.id)
   end
 
+
   def create
-    cart = CartItem.new(cart_items_params)
-    #item = Item.find(params[:item_id])
-    cart.customer_id = current_customer.id
-    #cart.item_id = item.id
-    #cart.amount = 1
-    #if CartItem.exists?(item_id: item.id, customer_id: current_customer.id)
-      #cart = CartItem.find_by(item_id: item.id, customer_id: current_customer.id)
-      #cart.amount += 1
-      #cart.save
-    #elsif cart.save
-    #else
-    #end
-    cart.save
-    redirect_to items_path
+    new_cart = CartItem.new(cart_items_params)
+
+    if CartItem.exists?(item_id: new_cart.item_id, customer_id: current_customer.id)
+      existing_cart = CartItem.find_by(item_id: new_cart.item_id, customer_id: current_customer.id)
+      existing_cart.amount += new_cart.amount
+      existing_cart.save
+    else
+      new_cart.customer_id = current_customer.id
+      new_cart.save
+    end
+
+    redirect_to cart_items_path
   end
+
 
   def update
     cart = CartItem.find(params[:id])
@@ -37,12 +38,14 @@ class Public::CartItemsController < ApplicationController
     redirect_to request.referer
   end
 
+
   def destroy
     cart = CartItem.find(params[:id])
     cart.destroy
     redirect_to request.referer
   end
 
+  
   def all_destroy
     current_customer.cart_items.destroy_all
     redirect_to request.referer
