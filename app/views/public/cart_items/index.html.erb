@@ -1,4 +1,26 @@
-<h1>カートの中</h1>
+<div class="d-flex justify-content-between">
+  <h3>ショッピングカート</h3>
+  <%= link_to "カートを空にする", cart_items_all_destroy_path, method: :delete, data: { confirm: "全てのカートの商品を削除します。\nよろしいですか？" }, class: "btn btn-danger" %>
+</div>
+
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+      <th>商品名</th>
+      <th>単価</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @cart.each do |cart| %>
+  <tbody>
+    <tr>
+      <td><%= cart.item.name %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
 <% @cart.each do |cart| %>
   <%= cart.item.name %>
   <%= cart.amount %>個
@@ -7,6 +29,5 @@
   <%= link_to "削除", cart_item_path(cart.id), method: :delete %>
   <br />
 <% end %>
-<%= link_to "すべて削除", cart_items_all_destroy_path, method: :delete, "data-confirm" => "全てのカートの商品を削除します。\nよろしいですか？" %>
-<hr />
+
 <%= link_to "注文", new_order_path %>
