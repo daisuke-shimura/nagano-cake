@@ -1,9 +1,9 @@
-<div class="col">
+<div class="col-4">
   <%= link_to root_path, class: "nav-link me-2" do %>
     <button type="button" class="btn btn-outline-dark w-25">LOGO</button>
   <% end %>
 </div>
-<div class="col">
+<div class="col-8">
   <% if customer_signed_in? %>
     <ul>
       <li><%= link_to "マイページ", customer_path(current_customer.id) %></li>
@@ -11,7 +11,7 @@
       <li><%= link_to "カート", cart_items_path %></li>
       <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
     </ul>
-    <h3>ログインユーザ：<%= current_customer.sei %> <%= current_customer.mei %></h3>
+    <h3>ログインユーザ：<%= current_customer.last_name %> <%= current_customer.first_name %></h3>
   <% else %>
     <ul class="nav">
       <li class="nav-item me-2">

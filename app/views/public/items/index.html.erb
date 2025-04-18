@@ -14,7 +14,7 @@
           <div class="d-flex flex-wrap">
             <div>
               画像<br>
-              <%= item.name %><br>
+              <%= link_to "#{item.name}", item_path(item.id) %><br>
               <%= item.price %>円
             </div>
           </div>

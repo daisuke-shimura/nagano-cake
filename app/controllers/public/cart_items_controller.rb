@@ -5,19 +5,20 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    cart = CartItem.new
-    item = Item.find(params[:item_id])
+    cart = CartItem.new(cart_items_params)
+    #item = Item.find(params[:item_id])
     cart.customer_id = current_customer.id
-    cart.item_id = item.id
-    cart.amount = 1
-    if CartItem.exists?(item_id: item.id, customer_id: current_customer.id)
-      cart = CartItem.find_by(item_id: item.id, customer_id: current_customer.id)
-      cart.amount += 1
-      cart.save
-    elsif cart.save
-    else
-    end
-    redirect_to request.referer
+    #cart.item_id = item.id
+    #cart.amount = 1
+    #if CartItem.exists?(item_id: item.id, customer_id: current_customer.id)
+      #cart = CartItem.find_by(item_id: item.id, customer_id: current_customer.id)
+      #cart.amount += 1
+      #cart.save
+    #elsif cart.save
+    #else
+    #end
+    cart.save
+    redirect_to items_path
   end
 
   def update
@@ -45,5 +46,10 @@ class Public::CartItemsController < ApplicationController
   def all_destroy
     current_customer.cart_items.destroy_all
     redirect_to request.referer
+  end
+
+  private
+  def cart_items_params
+    params.require(:cart_item).permit(:amount, :item_id)
   end
 end
