@@ -14,18 +14,8 @@
 <!--ここまで-->
 <div class="row">
   <div class="col-4">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ジャンル検索</th>
-        </tr>
-      </thead>
-      <% @genres.each do |ganre| %>
-      <tbody>
-        <tr><td><%= ganre.name %></td></tr>
-      </tbody>
-      <% end %>
-    </table>
+    <!--ジャンル表-->
+    <%= render "public/genres/table", genres: @genres %>
   </div>
 
   <div class="col-8">

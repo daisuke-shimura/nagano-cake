@@ -1,34 +1,26 @@
-<h1>ユーザーの商品一覧画面</h1>
+<div class="row">
+  <div class="col-3">
+    <!--ジャンル表-->
+    <%= render "public/genres/table", genres: @genres %>
+  </div>
+  <div class="col-9">
+    <div class="container">
+      <div class="row">
+        <div class="col"><h3>商品一覧</h3></div>
+        <div class="col">(全<%= @items.count %>件)</div>
+      </div>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="d-flex flex-wrap">
+            <div>
+              画像<br>
+              <%= item.name %><br>
+              <%= item.price %>円
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>値段</th>
-      <th>商品説明</th>
-      <th></th>
-    </tr>
-  </thead>
-  <% @items.each do |item| %>
-    <tbody>
-      <tr>
-        <td><%= link_to item_path(item.id) do %>
-              <%= item.name %>
-            <% end %>
-        </td>
-        <td><%= item.price %>円</td>
-        <td><%= item.introduction %></td>
-        <td><%= link_to "カートに入れる", cart_items_path(item_id: item.id), method: :post %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
-<hr>
-<% CartItem.all.each do |cart| %>
-  <%= cart.id %>
-  <%= cart.customer_id %>
-  <%= cart.item_id %>
-  <%= cart.amount %>
-  <%= link_to "削除", cart_item_path(cart.id), method: :delete %>
-  <br />
-<% end %>
+  </div>
+</div>
