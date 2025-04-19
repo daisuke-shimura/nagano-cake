@@ -1,5 +1,15 @@
 <h3><%= @customer.last_name %> <%= @customer.first_name %>さんのマイページ</h3>
 
+<div class="d-flex">
+  <h4>登録情報</h4>
+  <%= link_to "編集する", edit_customer_path(@customer.id), class:"btn btn-success ml-2" %>
+</div>
+<table>
+  <tr>
+    <th>氏名</th>
+    <td></td>
+  </tr>
+</table>
 <p>名前：<%= @customer.last_name %> <%= @customer.first_name %></p>
 <p>メールアドレス：<%= @customer.email %></p>
 <p>会員ステータス：
