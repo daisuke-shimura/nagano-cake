@@ -3,6 +3,11 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart = CartItem.includes(:item).where(customer_id: current_customer.id)
+    @total = 0
+    @cart.each do |cart|
+      @total += (cart.item.price)*(cart.amount)
+    end
+
   end
 
 
