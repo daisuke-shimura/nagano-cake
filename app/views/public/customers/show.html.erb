@@ -1,26 +1,42 @@
 <h3><%= @customer.last_name %> <%= @customer.first_name %>さんのマイページ</h3>
 
-<div class="d-flex">
+<div class="d-flex my-2">
   <h4>登録情報</h4>
   <%= link_to "編集する", edit_customer_path(@customer.id), class:"btn btn-success ml-2" %>
 </div>
-<table>
+<table class="table table-bordered">
   <tr>
-    <th>氏名</th>
-    <td></td>
+    <th class="table-secondary">氏名</th>
+    <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">カナ</th>
+    <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">郵便番号</th>
+    <td><%= @customer.post_number %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">住所</th>
+    <td><%= @customer.address %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">電話番号</th>
+    <td><%= @customer.phone_number %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">メールアドレス</th>
+    <td><%= @customer.email %></td>
   </tr>
 </table>
-<p>名前：<%= @customer.last_name %> <%= @customer.first_name %></p>
-<p>メールアドレス：<%= @customer.email %></p>
-<p>会員ステータス：
-  <% if @customer.is_active == true %>
-    有効
-  <% else %>
-    退会
-  <% end %>
-</p>
-<%= link_to "編集", edit_customer_path(@customer.id) %>
-<%= link_to "カート", cart_items_path %>
-<%= link_to "注文", new_order_path %>
-<%= link_to "退会", customer_confirm_path(@customer.id) %>
-<%= link_to "配送先の登録", address_index_path %>
+
+<div class="row my-2">
+  <div class="col-2"><h4>配送先</h4></div>
+  <div class="col-2"><%= link_to "一覧を見る", address_index_path, class:"btn btn-primary" %></div>
+</div>
+
+<div class="row my-2">
+  <div class="col-2"><h4>注文履歴</h4></div>
+  <div class="col-2"><%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></div>
+</div>
