@@ -23,14 +23,14 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/confirm/:id' => 'customers#confirm', as: 'customer_confirm'
+    patch 'customers/quit/:id' => 'customers#quit', as: 'customer_quit'
+
     root to: 'homes#top'
     get 'about' => 'homes#about'
 
     resources :items, only: [:index, :show]
-
-    resources :customers, only: [:show, :edit, :update]
-    get 'customers/confirm/:id' => 'customers#confirm', as: 'customer_confirm'
-    patch 'customers/quit/:id' => 'customers#quit', as: 'customer_quit'
 
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :update, :create, :destroy]
