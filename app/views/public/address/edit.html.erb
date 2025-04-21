@@ -1,15 +1,19 @@
-<h1>配送先編集画面</h1>
-<h3><%= @address.name %>の編集</h3>
+<h3 class="my-3">配送先編集画面</h3>
 
 <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
-  <%= f.label "配送先名" %><br />
-  <%= f.text_field :name %>
-  <br />
-  <%= f.label "郵便番号" %><br />
-  <%= f.text_field :number %>
-  <br />
-  <%= f.label "住所" %><br />
-  <%= f.text_field :place %>
-  <br />
-  <%= f.submit "変更" %>
+  <div class="row">
+    <div class="col-4"><%= f.label :post_number, "郵便番号" %></div>
+    <div class="col-4"><%= f.text_field :post_number %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-4"><%= f.label :address, "住所" %></div>
+    <div class="col-8"><%= f.text_field :address, class:"w-75" %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-4"><%= f.label :name, "宛名" %></div>
+    <div class="col-4"><%= f.text_field :name %></div>
+    <div class="col-4"><%= f.submit "変更内容を保存", class:"btn btn-success" %></div>
+  </div>
 <% end %>
