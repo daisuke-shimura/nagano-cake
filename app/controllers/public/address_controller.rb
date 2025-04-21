@@ -30,6 +30,6 @@ class Public::AddressController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:name, :number, :place)
+    params.require(:address).permit(:name, :post_number, :address)
   end
 end
