@@ -20,7 +20,7 @@
       <div class="row">
         <%= form_with model: @cart do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.select :amount, options_for_select((1..10).to_a), prompt: "個数選択", class: "form-select" %>
+          <%= f.select :amount, options_for_select((1..10).to_a), prompt: "個数選択", required: true , class: "form-select" %>
           <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
       </div>
