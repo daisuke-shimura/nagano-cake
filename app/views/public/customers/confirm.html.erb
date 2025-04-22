@@ -5,6 +5,6 @@
 <p class="text-center">退会する場合は、「退会する」をクリックしてください。</p>
 
 <div class="d-flex justify-content-center gap-3">
-  <div class="mx-3"><%= link_to "キャンセル", customer_path(@customer.id), class:"btn btn-primary" %></div>
-  <div class="mx-3"><%= link_to "退会", customer_quit_path(@customer.id), method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %></div>
+  <div class="mx-3"><%= link_to "キャンセル", customers_my_page_path, class:"btn btn-primary" %></div>
+  <div class="mx-3"><%= link_to "退会", customers_quit_path, method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %></div>
 </div>

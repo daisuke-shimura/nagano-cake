@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
-    patch 'orders/make/:id' => 'orders#make', as: 'order_make'
+    patch 'order_details/:id' => 'orders#update', as: 'order_detail'
   end
 
 #public
@@ -23,9 +23,12 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    resources :customers, only: [:show, :edit, :update]
-    get 'customers/confirm/:id' => 'customers#confirm', as: 'customer_confirm'
-    patch 'customers/quit/:id' => 'customers#quit', as: 'customer_quit'
+
+    get   "customers/my_page" => "customers#show"
+    get   "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+    get   "customers/confirm" => "customers#confirm"
+    patch "customers/quit" => "customers#quit"
 
     root to: 'homes#top'
     get 'about' => 'homes#about'
@@ -40,7 +43,7 @@ Rails.application.routes.draw do
     get 'orders/confirm/:id' => 'orders#confirm', as: 'order_confirm'
     get 'orders/decision/:id' => 'orders#decision', as: 'order_decision'
 
-    resources :address, only: [:index, :edit, :create, :update, :destroy]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

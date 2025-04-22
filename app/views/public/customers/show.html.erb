@@ -2,7 +2,7 @@
 
 <div class="d-flex my-2">
   <h4>登録情報</h4>
-  <%= link_to "編集する", edit_customer_path(@customer.id), class:"btn btn-success ml-2" %>
+  <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success ml-2" %>
 </div>
 <table class="table table-bordered">
   <tr>
@@ -33,7 +33,7 @@
 
 <div class="row my-2">
   <div class="col-2"><h4>配送先</h4></div>
-  <div class="col-2"><%= link_to "一覧を見る", address_index_path, class:"btn btn-primary" %></div>
+  <div class="col-2"><%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></div>
 </div>
 
 <div class="row my-2">
