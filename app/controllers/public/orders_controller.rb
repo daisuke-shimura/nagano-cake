@@ -30,6 +30,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.find(params[:id])
+    @cart = CartItem.includes(:item).where(customer_id: current_customer.id)
   end
 
 
@@ -51,7 +52,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:pay_method, :address, :post_number, :name)
+    params.require(:order).permit(:payment_method, :address, :post_number, :name)
   end
 
 

@@ -1,9 +1,58 @@
-<h1>注文確認画面</h1>
-<p>支払い方法：<%= @order.pay_method %></p>
-<p>配送先：<%= @order.address %></p>
-<p>でよろしいですか？</p>
-<p>
-  <%= link_to "キャンセル", order_path(@order.id), method: :delete %>
-  ：
-  <%= link_to "確定", order_decision_path(@order.id) %>
-</p>
+<h3>注文確認画面</h3>
+<div class="row">
+  <div class="col-8">
+    <table class="table table-bordered">
+      <thead class="table-secondary">
+        <tr>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.each do |cart| %>
+          <tr>
+            <td><%= cart.item.name %></td>
+            <td><%= cart.item.price %></td>
+            <td><%= cart.amount %></td>
+            <td><%= (cart.item.price)*(cart.amount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4">
+    <table class="table table-bordered">
+      <tr>
+        <th class="table-secondary">送料</th>
+        <td><%= @order.delivery_fee %></td>
+      </tr>
+      <tr>
+        <th class="table-secondary">商品合計</th>
+        <td><%= @order.total_cost %></td>
+      </tr>
+      <tr>
+        <th class="table-secondary">請求金額</th>
+        <td><%= (@order.delivery_fee)+(@order.total_cost) %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col-2"><h4>支払方法</h4></div>
+  <div class="col-2"><%= @order.payment_method %></div>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col-2"><h4>お届け先</h4></div>
+  <div class="col-2">〒<%= @order.post_number %> <%= @order.address %><br><%= @order.name %></div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%= link_to "キャンセル", order_path(@order.id), method: :delete, class:"btn btn-outline-primary mx-3" %>
+  <%= link_to "確定", order_decision_path(@order.id), class:"btn btn-success mx-3" %>
+</div>

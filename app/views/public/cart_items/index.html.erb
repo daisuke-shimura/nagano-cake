@@ -13,8 +13,8 @@
       <th></th>
     </tr>
   </thead>
-  <% @cart.each do |cart| %>
   <tbody>
+  <% @cart.each do |cart| %>
     <tr>
       <td><%= cart.item.name %></td>
       <td><%= cart.item.price %>円</td>
@@ -34,8 +34,8 @@
       <td><%= (cart.item.price)*(cart.amount) %>円</td>
       <td><%= link_to "削除", cart_item_path(cart.id), method: :delete, class:"btn btn-danger" %></td>
     </tr>
-  </tbody>
   <% end %>
+  </tbody>
 </table>
 
 <div class="d-flex justify-content-around">
