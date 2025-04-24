@@ -13,9 +13,18 @@ class Public::OrdersController < ApplicationController
     order.customer_id = current_customer.id
     order.delivery_fee = 800
     order.total_cost = 0
+    order.save#order.idをつけるため
+
     CartItem.includes(:item).where(customer_id: current_customer.id).each do |cart|
       order.total_cost += (cart.item.price)*(cart.amount)
+      detail = OrderDetail.new
+      detail.order_id = order.id
+      detail.item_id = cart.item.id
+      detail.price = cart.item.price
+      detail.amount = cart.amount
+      detail.save
     end
+
     order.save
     redirect_to order_confirm_path(order.id)
   end
@@ -40,12 +49,12 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.where(customer_id: current_customer.id)
+    @orders = Order.includes(order_details: :item).where(customer_id: current_customer.id)
   end
 
 
   def show
-    
+    @order = Order.includes(order_details: :item).find(params[:id])
   end
 
 
@@ -53,6 +62,11 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:payment_method, :address, :post_number, :name)
+  end
+
+
+  def order_detail_params
+    params.require(:order_detail).permit()
   end
 
 
