@@ -2,7 +2,7 @@
 
 
 <table class="table table-inverse">
-  <thead>
+  <thead class="table-secondary">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -14,12 +14,14 @@
     <% @orders.each do |order| %>
     <tr>
       <td>
-        <%= (order.created_at).year %>/<%= (order.created_at).month %>/<%= (order.created_at).day %>
-        <%= (order.created_at).strftime("%H:%M:%S") %>
+        <%= link_to admin_order_path(order.id) do %>
+          <%= (order.created_at).year %>/<%= (order.created_at).month %>/<%= (order.created_at).day %>
+          <%= (order.created_at).strftime("%H:%M:%S") %>
+        <% end %>
       </td>
-      <td><%= order.customer.name %></td>
+      <td><%= order.customer.last_name %> <%= order.customer.first_name %></td>
       <td>
-
+        <%= order.order_details.sum(:amount) %>
       </td>
       <td><%= order.order_status_i18n %></td>
     </tr>
