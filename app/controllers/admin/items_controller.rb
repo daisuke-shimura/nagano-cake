@@ -13,6 +13,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.pluck(:id, :name)
   end
 
   def edit
