@@ -1,8 +1,19 @@
-<%= link_to "商品一覧", admin_items_path %>
-<h3>商品登録</h3>
+<h3 class="my-3">商品登録</h3>
+
+
 <%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="row">
+    <div class="col">商品画像</div>
+    <div class="col"></div>
+  </div>
+
+  <div class="row">
+    <div class="col"><%= f.label :name, "商品名" %></div>
+    <div class="col"><%= f.text_field :name %></div>
+  </div>
+
+  
+  
 
   <%= f.label :price %>
   <%= f.number_field :price %>
