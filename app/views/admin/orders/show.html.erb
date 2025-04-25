@@ -40,7 +40,7 @@
   <div class="col-2">注文ステータス</div>
   <div class="col-4">
   <%= form_with model:@order, url:admin_order_path(@order.id), method: :patch do |f| %>
-    <%= f.select :order_status, Order.order_statuses.map { |k, _| [Order.order_statuses_i18n[k], k] }, selected: @order.order_status_i18n %>
+    <%= f.select :order_status, Order.order_statuses.map { |k, _| [Order.order_statuses_i18n[k], k] }, selected: @order.order_status %>
     <%= f.submit "更新", class:"btn btn-success" %>
   <% end %>
   </div>
@@ -67,10 +67,9 @@
           <td><%= (detail.item.price)*(detail.amount) %></td>
           <td>
             <%= form_with model:detail, url: admin_order_detail_path(detail.id), method: :patch do |f| %>
-              <%= f.select :making_status, OrderDetail.making_statuses.map { |k, _| [OrderDetail.making_statuses_i18n[k], k]}, selected: detail.making_status_i18n %>
+              <%= f.select :making_status, OrderDetail.making_statuses.map { |k, _| [OrderDetail.making_statuses_i18n[k], k]}, selected: detail.making_status %>
               <%= f.submit "更新", class:"btn btn-success" %>
             <% end %>
-            <br><%= detail.making_status_i18n %>
           </td>
         </tr>
         <% end %>
