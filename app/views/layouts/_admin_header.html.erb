@@ -3,35 +3,19 @@
 </div>
 <div class="col-8">
   <% if admin_signed_in? %>
-    <ul class="nav">
-      <li class="nav-item me-2"><%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-secondary" %></li>
-      <li class="nav-item me-2"><%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-secondary" %></li>
-      <li class="nav-item me-2"><%= link_to "注文履歴一覧", admin_root_path, class:"btn btn-outline-secondary" %></li>
-      <li class="nav-item me-2"><%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-secondary" %></li>
-      <li class="nav-item me-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary" %></li>
+    <ul class="nav my-2">
+      <li class="nav-item mx-1"><%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "注文履歴一覧", admin_root_path, class:"btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary" %></li>
     </ul>
   <% else %>
-    <ul class="nav">
-      <li class="nav-item me-2">
-        <%= link_to about_path, class: "nav-link me-2" do %>
-          <button type="button" class="btn btn-outline-secondary">About</button>
-        <% end %>
-      </li>
-      <li class="nav-item me-2">
-        <%= link_to items_path, class: "nav-link me-2" do %>
-          <button type="button" class="btn btn-outline-secondary">商品一覧</button>
-        <% end %>
-      </li>
-      <li class="nav-item me-2">
-        <%= link_to new_customer_registration_path, class: "nav-link me-2" do %>
-          <button type="button" class="btn btn-outline-secondary">新規登録</button>
-        <% end %>
-      </li>
-      <li class="nav-item me-2">
-        <%= link_to new_customer_session_path, class: "nav-link me-2" do %>
-          <button type="button" class="btn btn-outline-secondary">ログイン</button>
-        <% end %>
-      </li>
+    <ul class="nav my-2">
+      <li class="nav-item mx-1"><%= link_to "About", about_path, class: "btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %></li>
     </ul>
   <% end %>
 </div>
