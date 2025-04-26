@@ -14,10 +14,13 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
     @genres = Genre.pluck(:id, :name)
+    @submit = "新規登録"
   end
 
   def edit
     @item = Item.find(params[:id])
+    @genres = Genre.pluck(:id, :name)
+    @submit = "変更を保存"
   end
 
   def create
