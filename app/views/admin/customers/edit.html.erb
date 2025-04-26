@@ -1,2 +1,57 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h3 class="my-3"><%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集</h3>
+
+
+<div class="row">
+  <div class="col-4">会員ID</div>
+  <div class="col-8"><%= @customer.id %></div>
+</div>
+
+<%= form_with model:@customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+<div class="row">
+  <div class="col-4"><%= f.label :last_name, "氏名" %></div>
+  <div class="col-4"><%= f.text_field :last_name %></div>
+  <div class="col-4"><%= f.text_field :first_name %></div>
+</div>
+
+<div class="row">
+  <div class="col-4"><%= f.label :last_name_kana, "フリガナ" %></div>
+  <div class="col-4"><%= f.text_field :last_name_kana %></div>
+  <div class="col-4"><%= f.text_field :first_name_kana %></div>
+</div>
+
+<div class="row">
+  <div class="col-4"><%= f.label :post_number, "郵便番号" %></div>
+  <div class="col-8"><%= f.text_field :post_number %></div>
+</div>
+
+<div class="row">
+  <div class="col-4"><%= f.label :address, "住所" %></div>
+  <div class="col-8"><%= f.text_field :address %></div>
+</div>
+
+<div class="row">
+  <div class="col-4"><%= f.label :phone_number, "電話番号" %></div>
+  <div class="col-8"><%= f.text_field :phone_number %></div>
+</div>
+
+<div class="row">
+  <div class="col-4"><%= f.label :email, "メールアドレス" %></div>
+  <div class="col-8"><%= f.text_field :email %></div>
+</div>
+
+<div class="row">
+  <div class="col-4">会員ステータス</div>
+  <div class="col-4">
+    <%= f.radio_button :is_active, true %>
+    <%= f.label :is_active_true, "有効" %>
+  </div>
+  <div class="col-4">
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :is_active_false, "退会" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-8 offset-4"><%= f.submit "変更を保存", class:"btn btn-success" %></div>
+</div>
+<% end %>
