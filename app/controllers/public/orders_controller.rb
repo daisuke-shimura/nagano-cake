@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
 
     elsif address_option == 1
       order = Order.new(order_address_params)
-      address = Address.find(params[:address_id])
+      address = Address.find(params[:order][:address_id])
       order.post_number = address.post_number
       order.address = address.address
       order.name = address.name
