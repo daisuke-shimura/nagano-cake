@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    redirect_to customer_path(current_customer.id)
+    redirect_to new_order_path(current_customer.id)
   end
 
 

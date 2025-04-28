@@ -10,7 +10,18 @@
 
   <h4 class="mt-3">お届け先</h4>
 
-  <h5>新しいお届け先</h5>
+  <!--ご自身の住所-->
+  <%= f.radio_button :address_option, 0 %>
+  <%= f.label :address_option_0, "ご自身の住所", class:"h5" %>
+  <br>
+  <!--登録済みの住所-->
+  <%= f.radio_button :address_option, 1 %>
+  <%= f.label :address_option_1, "ご自身の住所", class:"h5" %>
+  <br>
+  <!--新規住所-->
+  <%= f.radio_button :address_option, 2 %>
+  <%= f.label :address_option_2, "新規住所", class:"h5" %>
+  <br>
   <%= f.label :address, "住所" %>
   <%= f.text_field :address %>
   <br>
