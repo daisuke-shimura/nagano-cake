@@ -4,7 +4,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.includes(:genre).all
+    @items = Item.includes(:genre).page(params[:page]).per(10)
   end
 
   def show

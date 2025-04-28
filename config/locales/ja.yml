@@ -16,6 +16,13 @@ ja:
         waiting_making: "製作待ち"
         making: "製作中"
         making_complete: "作成完了"
+  views:
+    pagination:
+      first: <i class="fa-solid fa-angles-left"></i>
+      last: <i class="fa-solid fa-angles-right"></i>
+      previous: <i class="fa-solid fa-angle-left"></i>
+      next: <i class="fa-solid fa-angle-right"></i>
+      truncate: <i class="fa-solid fa-ellipsis"></i>
   activerecord:
     errors:
       messages:
