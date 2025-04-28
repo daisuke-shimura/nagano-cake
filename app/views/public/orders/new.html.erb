@@ -13,14 +13,21 @@
   <!--ご自身の住所-->
   <%= f.radio_button :address_option, 0 %>
   <%= f.label :address_option_0, "ご自身の住所", class:"h5" %>
-  <br>
+    <p>
+      〒<%= @customer.post_number %> <%= @customer.address %>
+      <br>
+      <%= @customer.last_name %> <%= @customer.first_name %>
+    </p>
+
   <!--登録済みの住所-->
   <%= f.radio_button :address_option, 1 %>
-  <%= f.label :address_option_1, "ご自身の住所", class:"h5" %>
+  <%= f.label :address_option_1, "登録済みの住所", class:"h5" %>
+  <br>
+  <%= f.collection_select :address_id, @address, :id, :address_label_method, include_blank:"--選択してください--" %>
   <br>
   <!--新規住所-->
   <%= f.radio_button :address_option, 2 %>
-  <%= f.label :address_option_2, "新規住所", class:"h5" %>
+  <%= f.label :address_option_2, "新規住所", class:"h5 mt-3" %>
   <br>
   <%= f.label :address, "住所" %>
   <%= f.text_field :address %>
