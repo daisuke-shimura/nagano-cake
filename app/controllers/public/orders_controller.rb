@@ -68,7 +68,7 @@ class Public::OrdersController < ApplicationController
 
 
   def decision
-
+    current_customer.cart_items.destroy_all
   end
 
 
