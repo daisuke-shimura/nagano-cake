@@ -1,5 +1,6 @@
 class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
+  before_action :customer_is_active
   def index
     @addresses = Address.where(customer_id: current_customer.id)
     @address = Address.new

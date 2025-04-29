@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :customer_is_active
+
   def show
     @customer = current_customer
   end
@@ -25,7 +27,8 @@ class Public::CustomersController < ApplicationController
     customer = current_customer
     customer.is_active = false
     customer.save
-    redirect_to customers_my_page_path
+    sign_out current_customer
+    redirect_to root_path
   end
 
   private

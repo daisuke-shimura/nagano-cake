@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :customer_is_active
   before_action :cart_item_empty, only: [:new]
 
   def new
@@ -13,20 +14,20 @@ class Public::OrdersController < ApplicationController
     address_option = params[:order][:address_option].to_i
 
     if address_option == 0
-      order = Order.new(order_address_params)
+      order = Order.new(order_params)
       order.post_number = current_customer.post_number
       order.address = current_customer.address
       order.name = "#{current_customer.last_name} #{current_customer.first_name}"
 
     elsif address_option == 1
-      order = Order.new(order_address_params)
+      order = Order.new(order_params)
       address = Address.find(params[:order][:address_id])
       order.post_number = address.post_number
       order.address = address.address
       order.name = address.name
 
     elsif address_option == 2
-      order = Order.new(order_address_params)
+      order = Order.new(order_params)
 
     else
       #エラー
@@ -83,19 +84,8 @@ class Public::OrdersController < ApplicationController
 
 
   private
-
   def order_params
-    params.require(:order).permit(:payment_method)
-  end
-
-
-  def order_address_params
     params.require(:order).permit(:payment_method, :address, :post_number, :name)
-  end
-
-
-  def order_detail_params
-    params.require(:order_detail).permit()
   end
 
 
@@ -105,4 +95,5 @@ class Public::OrdersController < ApplicationController
       redirect_to cart_items_path
     end
   end
+  
 end
