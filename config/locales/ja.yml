@@ -15,7 +15,7 @@ ja:
         not_making: "製作不可"
         waiting_making: "製作待ち"
         making: "製作中"
-        making_complete: "作成完了"
+        making_complete: "製作完了"
   views:
     pagination:
       first: <i class="fa-solid fa-angles-left"></i>
