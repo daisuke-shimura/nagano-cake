@@ -16,7 +16,10 @@
   <tbody>
   <% @cart.each do |cart| %>
     <tr>
-      <td><%= cart.item.name %></td>
+      <td>
+        <%= image_tag cart.item.get_item_image.variant(resize_to_limit: [50, 60]).processed %>
+        <%= cart.item.name %>
+      </td>
       <td><%= cart.item.tax_price %>円</td>
       <td>
         <%= link_to cart_item_path(cart.id, sign: 0), method: :patch, class:"btn btn-light" do %>
