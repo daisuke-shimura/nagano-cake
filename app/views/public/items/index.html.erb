@@ -7,19 +7,22 @@
     <div class="container">
       <div class="row">
         <div class="col"><h3>商品一覧</h3></div>
-        <div class="col">(全<%= @items.count %>件)</div>
+        <div class="col">(全<%= Item.where(is_active: true).count %>件)</div>
       </div>
       <div class="row">
         <% @items.each do |item| %>
-          <div class="d-flex flex-wrap">
+          <div class="col-3 d-flex flex-wrap">
             <div>
-              画像<br>
-              <%= link_to "#{item.name}", item_path(item.id) %><br>
+              <%= image_tag item.get_item_image.variant(resize_to_limit: [100, 120]).processed %>
+              <br>
+              <%= link_to "#{item.name}", item_path(item.id) %>
+              <br>
               <%= item.price %>円
             </div>
           </div>
         <% end %>
       </div>
+      <%= paginate @items %>
     </div>
 
   </div>

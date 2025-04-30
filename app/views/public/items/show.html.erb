@@ -4,7 +4,7 @@
     <%= render "public/genres/table", genres: @genres %>
   </div>
   <div class="col-3">
-    画像
+    <%= image_tag @item.get_item_image.variant(resize_to_limit: [200, 240]).processed %>
   </div>
   <div class="col-6">
     <div class="container">
