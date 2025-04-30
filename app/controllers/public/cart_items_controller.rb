@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
     @cart = CartItem.includes(:item).where(customer_id: current_customer.id)
     @total = 0
     @cart.each do |cart|
-      @total += (cart.item.price)*(cart.amount)
+      @total += (cart.item.tax_price)*(cart.amount)
     end
 
   end

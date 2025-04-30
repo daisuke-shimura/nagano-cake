@@ -15,13 +15,13 @@
         <p><%= @item.introduction %></p>
       </div>
       <div class="row">
-        <h4>￥ <%= @item.price %></h4>（税込）
+        <h4>￥ <%= @item.tax_price %></h4>（税込）
       </div>
       <div class="row">
         <%= form_with model: @cart do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
-          <%= f.select :amount, options_for_select((1..10).to_a), prompt: "個数選択", required: true , class: "form-select" %>
-          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          <%= f.select :amount, options_for_select((1..10).to_a), {include_blank: "選択"}, { class: 'form-control', required: true } %>
+          <%= f.submit "カートに入れる", class: "btn btn-success mt-2" %>
         <% end %>
       </div>
     </div>

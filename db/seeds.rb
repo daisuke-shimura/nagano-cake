@@ -153,31 +153,31 @@ end
 Item.create!([
   {
     name: "苺のミルフィーユ・ブランシュ",
-    price: 680,
+    price: 600,
     genre_id: 1,
     introduction: "サクサクのパイ生地に甘酸っぱい苺とクリーミーなホワイトカスタードを重ねた一品。"
   },
   {
     name: "フルーツタルト",
-    price: 720,
+    price: 700,
     genre_id: 2,
     introduction: "色とりどりのフルーツを贅沢に盛り付けた、爽やかで華やかなタルト。"
   },
   {
     name: "カスタードシュー",
-    price: 280,
+    price: 300,
     genre_id: 3,
     introduction: "香ばしいシュー生地に、とろけるカスタードがたっぷり。"
   },
   {
     name: "レアチーズ",
-    price: 540,
+    price: 500,
     genre_id: 4,
     introduction: "ふんわりとろける口当たりのレアチーズケーキ。"
   },
   {
     name: "カスタードプリン",
-    price: 350,
+    price: 300,
     genre_id: 5,
     introduction: "昔ながらのなめらかプリンに、濃厚なカスタードの風味。"
   },
@@ -189,7 +189,7 @@ Item.create!([
   },
   {
     name: "ガトーショコラ",
-    price: 480,
+    price: 500,
     genre_id: 7,
     introduction: "濃厚でしっとり、大人の味わいのチョコレートケーキ。"
   },
@@ -201,13 +201,13 @@ Item.create!([
   },
   {
     name: "ビターショコラ",
-    price: 520,
+    price: 500,
     genre_id: 9,
     introduction: "ビターなチョコレートが香る、甘さ控えめなスイーツ。"
   },
   {
     name: "春摘み苺のプレミアムロール",
-    price: 750,
+    price: 700,
     genre_id: 10,
     introduction: "春摘み苺の甘酸っぱさと、ふわふわ生地の贅沢ロールケーキ。"
   }  

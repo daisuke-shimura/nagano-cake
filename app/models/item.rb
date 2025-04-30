@@ -13,4 +13,8 @@ class Item < ApplicationRecord
     end
     image
   end
+
+  def tax_price
+    (price * 1.1).to_i
+  end
 end

@@ -7,7 +7,7 @@
   <thead class="table-secondary">
     <tr>
       <th>商品名</th>
-      <th>単価</th>
+      <th>単価（税込）</th>
       <th>数量</th>
       <th>小計</th>
       <th></th>
@@ -17,7 +17,7 @@
   <% @cart.each do |cart| %>
     <tr>
       <td><%= cart.item.name %></td>
-      <td><%= cart.item.price %>円</td>
+      <td><%= cart.item.tax_price %>円</td>
       <td>
         <%= link_to cart_item_path(cart.id, sign: 0), method: :patch, class:"btn btn-light" do %>
           <% if cart.amount == 1 %>
@@ -31,7 +31,7 @@
           <i class="fa-solid fa-plus"></i>
         <% end %>
       </td>
-      <td><%= (cart.item.price)*(cart.amount) %>円</td>
+      <td><%= (cart.item.tax_price)*(cart.amount) %>円</td>
       <td><%= link_to "削除", cart_item_path(cart.id), method: :delete, class:"btn btn-danger" %></td>
     </tr>
   <% end %>
