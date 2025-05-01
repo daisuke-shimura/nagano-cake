@@ -4,9 +4,13 @@
       <th>ジャンル検索</th>
     </tr>
   </thead>
-  <% genres.each do |ganre| %>
+  <% genres.each do |genre| %>
   <tbody>
-    <tr><td><%= ganre.name %></td></tr>
+    <tr>
+      <td>
+        <%= link_to "#{genre.name}", items_path(genre_id: genre.id) %>
+      </td>
+    </tr>
   </tbody>
   <% end %>
 </table>
