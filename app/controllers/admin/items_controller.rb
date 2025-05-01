@@ -1,6 +1,5 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_search_variable
 
   def top
   end

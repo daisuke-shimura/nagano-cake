@@ -1,6 +1,5 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_search_variable
   
   def top
     if params[:customer_id].present?

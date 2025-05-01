@@ -10,6 +10,14 @@
       <li class="nav-item mx-1"><%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-secondary" %></li>
       <li class="nav-item mx-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary" %></li>
     </ul>
+  <% else %>
+    <ul class="nav my-2">
+      <li class="nav-item mx-1"><%= link_to "About", about_path, class: "btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %></li>
+      <li class="nav-item mx-1"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %></li>
+    </ul>
+  <% end %>
 
     <%= search_form_for @q, url: admin_items_path, method: :get do |f| %>
       <div class="d-flex justify-content-end my-3">
@@ -19,12 +27,4 @@
       </div>
     <% end %>
 
-  <% else %>
-    <ul class="nav my-2">
-      <li class="nav-item mx-1"><%= link_to "About", about_path, class: "btn btn-outline-secondary" %></li>
-      <li class="nav-item mx-1"><%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %></li>
-      <li class="nav-item mx-1"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %></li>
-      <li class="nav-item mx-1"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %></li>
-    </ul>
-  <% end %>
 </div>

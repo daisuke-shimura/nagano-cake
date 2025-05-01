@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_search_variable
 
   def customer_is_active
     unless current_customer.is_active
