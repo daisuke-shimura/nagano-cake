@@ -1,7 +1,7 @@
 <div class="col-4">
   <h2><i class="fa-solid fa-user-tag"></i>管理者用ページ</h2>
 </div>
-<div class="col-8">
+<div class="col-6 offset-2">
   <% if admin_signed_in? %>
     <ul class="nav my-2">
       <li class="nav-item mx-1"><%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-secondary" %></li>

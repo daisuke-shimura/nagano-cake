@@ -1,9 +1,7 @@
 <div class="col-4">
-  <%= link_to root_path, class: "nav-link me-2" do %>
-    <button type="button" class="btn btn-outline-dark w-25">LOGO</button>
-  <% end %>
+  <%= link_to "LOGO", root_path, class: "btn btn-outline-dark my-2 w-25" %>
 </div>
-<div class="col-8">
+<div class="col-6 offset-2">
   <% if customer_signed_in? %>
     <ul class="nav my-2">
       <li class="nav-item mx-1"><%= link_to "マイページ", customers_my_page_path, class:"btn btn-outline-secondary" %></li>
