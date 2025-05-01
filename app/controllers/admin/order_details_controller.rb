@@ -1,4 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_search_variable
+
   def update
     detail = OrderDetail.find(params[:id])
     detail.update(admin_order_detail_params)

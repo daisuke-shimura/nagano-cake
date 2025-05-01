@@ -1,10 +1,12 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_search_variable
+
   def top
   end
 
   def index
-    @items = Item.includes(:genre).page(params[:page]).per(10)
+    @items = @q.result(distinct: true).includes(:genre).page(params[:page]).per(10)
   end
 
   def show

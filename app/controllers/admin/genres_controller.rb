@@ -1,5 +1,7 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_search_variable
+  
   def index
     @genre = Genre.new
     @genres = Genre.all

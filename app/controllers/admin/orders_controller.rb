@@ -1,5 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_search_variable
+
   def show
     @order = Order.includes(:customer, :order_details, order_details: :item).find(params[:id])
 

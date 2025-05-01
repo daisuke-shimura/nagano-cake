@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
       redirect_to destroy_customer_session_path
     end
   end
+
+  def set_search_variable
+    @q = Item.ransack(params[:q])
+  end
 end

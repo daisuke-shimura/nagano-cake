@@ -17,4 +17,11 @@ class Item < ApplicationRecord
   def tax_price
     (price * 1.1).to_i
   end
+
+
+  #検索用
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
+  
 end
