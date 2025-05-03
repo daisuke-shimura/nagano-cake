@@ -35,10 +35,9 @@ Rails.application.routes.draw do
     delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     resources :cart_items, only: [:index, :update, :create, :destroy]
 
-    #注文履歴削除（destroy）は要らない
-    resources :orders, only: [:index, :new, :show, :create, :destroy]
-    get 'orders/confirm/:id' => 'orders#confirm', as: 'order_confirm'
-    get 'orders/decision/:id' => 'orders#decision', as: 'order_decision'
+    post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    get 'orders/decision' => 'orders#decision', as: 'order_decision'
+    resources :orders, only: [:index, :new, :show, :create]
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end

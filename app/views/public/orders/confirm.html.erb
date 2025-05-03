@@ -1,4 +1,7 @@
 <h3>注文確認画面</h3>
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+
 <div class="row">
   <div class="col-8">
     <table class="table table-bordered">
@@ -55,7 +58,19 @@
   <div class="col-2">〒<%= @order.post_number %> <%= @order.address %><br><%= @order.name %></div>
 </div>
 
+<!--データの引継ぎ-->
+<%= f.hidden_field :customer_id %>
+<%= f.hidden_field :delivery_fee %>
+<%= f.hidden_field :total_cost %>
+<%= f.hidden_field :name %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :post_number %>
+<%= f.hidden_field :payment_method %>
+
+
 <div class="d-flex justify-content-center">
-  <%= link_to "キャンセル", order_path(@order.id), method: :delete, class:"btn btn-outline-primary mx-3" %>
-  <%= link_to "確定", order_decision_path(@order.id), class:"btn btn-success mx-3" %>
+  <%= link_to "キャンセル", new_order_path, class:"btn btn-outline-primary mx-3" %>
+  <%= f.submit "確定", class:"btn btn-success mx-3" %>
 </div>
+
+<% end %>
